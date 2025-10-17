@@ -1,0 +1,63 @@
+---
+alwaysApply: true
+---
+
+## TypeScript & Code Style
+
+- TypeScript for all code
+- Object structures: `interface`, combinations/unions: `type`
+- Interface prefix: `IButtonProps`, `IModalProps`
+- Prefer `const`, use `let` only when immutable updates impossible
+- Arrow functions: `const Component = () => {}`
+- Comments in English only
+- No emojis in code
+- No `any` types
+- No type assertions except `as const`
+
+## Import Rules (FSD)
+
+- Always use absolute paths: `app/*` alias
+- Entities/Features: `app/entities/[domain]`, `app/features/[feature]`
+- Shared: `app/shared/[segment]`
+- Same segment: relative paths allowed (`./`, `../`)
+- Group same import paths together
+
+## FSD Architecture
+
+- Allowed segments: `api`, `ui`, `config`, `lib`, `model`
+
+## File Naming
+
+- Components: PascalCase
+- API functions: `method-resource.ts` (kebab-case)
+- Hooks: `useVerbResource.ts`
+- Utilities: camelCase
+- Domain folders: kebab-case
+
+## Functional Programming
+
+- Immutable updates: spread operators, array methods
+- `map`/`filter`/`reduce` over `for` loops
+- Pure functions only
+- Early returns over nested `if`s
+
+## React Patterns
+
+- Single responsibility per function/component
+- Business logic in custom hooks, UI in components
+- Declarative data flow: React Query/Zustand over useEffect
+- Optimize bundle size and minimize re-renders
+- Use proper key props in lists
+
+## Styling
+
+- Tailwind only: no `style` props/inline CSS
+- LinkBrain Design system values first, temporary arbitrary values allowed during experiments
+- Config file for repeated values
+
+## Code Quality & Linting
+
+- check for lint/type errors after code changes
+- ix all errors before saying task is complete
+- inform user of any unresolved errors
+- Fix import errors and TypeScript type mismatches immediately
