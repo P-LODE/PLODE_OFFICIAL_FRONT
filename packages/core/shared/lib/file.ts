@@ -1,0 +1,10 @@
+export type FileType =
+  | 'pdf'
+  | 'docx'
+  | 'txt'
+  | 'md'
+  | 'jpg'
+  | 'jpeg'
+  | 'gif'
+  | 'png'
+  | 'webp'
