@@ -1,9 +1,14 @@
 import type { TFunction } from 'i18next'
 
-export const formatDate = (dateString: string) => {
-  const date = new Date(dateString)
-  return `${date.getFullYear().toString().slice(2)}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')}`
+export const formatDate = (date: Date | string): string => {
+  const d = new Date(date)
+  return d.toLocaleDateString('en-US', {
+    year: 'numeric',
+    month: 'long',
+    day: 'numeric',
+  })
 }
+
 export const formatDateWithTime = (dateString: string) => {
   const date = new Date(dateString)
   return `${date.getFullYear().toString().slice(2)}.${(date.getMonth() + 1).toString().padStart(2, '0')}.${date.getDate().toString().padStart(2, '0')} ${date.getHours().toString().padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`
@@ -27,4 +32,11 @@ export const formatDateLabelWithTime = (
     .getHours()
     .toString()
     .padStart(2, '0')}:${date.getMinutes().toString().padStart(2, '0')}`
+}
+
+export const formatCurrency = (amount: number, currency = 'USD'): string => {
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency,
+  }).format(amount)
 }

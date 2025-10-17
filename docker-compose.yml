@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  plode-desktop:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: plode-desktop
+    restart: unless-stopped
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=production
+    networks:
+      - plode-network
+
+  nginx:
+    image: nginx:alpine
+    container_name: plode-nginx
+    restart: unless-stopped
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./ssl:/etc/nginx/ssl:ro
+    depends_on:
+      - plode-desktop
+    networks:
+      - plode-network
+
+networks:
+  plode-network:
+    driver: bridge
+
+volumes:
+  ssl:
