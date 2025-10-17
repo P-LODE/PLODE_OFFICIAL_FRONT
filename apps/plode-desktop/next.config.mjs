@@ -1,9 +1,7 @@
 /* eslint-disable no-undef */
 /** @type {import('next').NextConfig} */
-import 'dotenv/config'
 
 import { withSentryConfig } from '@sentry/nextjs'
-import withPWA from 'next-pwa'
 
 const nextConfig = {
   output: 'standalone',
